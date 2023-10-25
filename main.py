@@ -7,6 +7,7 @@ import json
 intents=discord.Intents.all()
 client = discord.Client(intents=intents)
 
+#コンフィグ読み込み
 with open('config.json') as config_file:
     config_data = json.load(config_file)
     TOKEN = config_data.get('token', '')
