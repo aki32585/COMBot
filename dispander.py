@@ -22,16 +22,16 @@ async def dispand(message):
     messages = await extract_message(message)
     for m in messages:
         if m.content or m.attachments:
-            await message.channel.send(embed=compose_embed(m))
+            await message.reply(embed=compose_embed(m), mention_author=False)
         # Send the second and subsequent attachments with embed (named 'embed') respectively:
         for attachment in m.attachments[1:]:
             embed = Embed()
             embed.set_image(
                 url=attachment.proxy_url
             )
-            await message.channel.send(embed=embed)
+            await message.reply(embed=embed, mention_author=False)
         for embed in m.embeds:
-            await message.channel.send(embed=embed)
+            await message.reply(embed=embed, mention_author=False)
 
 
 async def extract_message(message):
