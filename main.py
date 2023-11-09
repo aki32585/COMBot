@@ -27,7 +27,7 @@ async def on_message(message):
             # URLを改変して新しいメッセージを生成
             modified_url = url.replace("x.com", "fxtwitter.com")
             # リプライで送る(メンションなし)
-            await message.reply(f"{modified_url}", mention_author=False)
+            await message.channel.send(f"{modified_url}", mention_author=False)
     # "twitter.com"を含むURLが見つかった場合
     for url in urls:
         if "https://twitter.com" in url:
@@ -35,6 +35,6 @@ async def on_message(message):
             modified_url = url.replace("twitter.com", "fxtwitter.com")
 
             # リプライで送る(メンションなし)
-            await message.reply(f"{modified_url}", mention_author=False)
+            await message.channel.send(f"{modified_url}", mention_author=False)
 
 client.run(TOKEN)
