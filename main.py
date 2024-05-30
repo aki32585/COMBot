@@ -1,11 +1,13 @@
-import re
+import math
 import json
 import discord
+from discord import app_commands
 from dispander import dispand
 
 # intentsの設定
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
 # コンフィグ読み込み
 with open('config.json') as config_file:
@@ -39,9 +41,18 @@ async def on_message(message):
     if message.content.startswith("!hyouketsu"):
             h1 = message.content.split(" ")
             print(h1)
-            h2 = int(h1[1])
+            try:
+                h2 = int(h1[1])
+            except:
+                 await message.reply("エラー：入力データが無効です。数値を入力してください。")
             h2 = round(h2 / 170)
             print(h2)
             await message.reply(f"🍶🤖<氷結{str(h2)}本買えるのに...", mention_author=False)
+
+@tree.command(name="hyouketsu",description="入力された金額で何本の氷結350ml缶が買えるか計算します")
+async def test_command(interaction: discord.Interaction,price:int):
+        price = math.floor(price / 170)
+        text = (f"🍶🤖<氷結{str(price)}本買えるのに...")
+        await interaction.response.send_message(text)
             
 client.run(TOKEN)
