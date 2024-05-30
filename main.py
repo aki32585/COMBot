@@ -48,7 +48,7 @@ async def on_message(message):
             try:
                 h2 = int(h1[1])
             except:
-                 await message.reply("エラー：入力データが無効です。数値を入力してください。",ephemeral=True)
+                 await message.reply("エラー：入力データが無効です。数値を入力してください。")
             h2 = round(h2 / 170)
             print(h2)
             await message.reply(f"🍶🤖<氷結{str(h2)}本買えるのに...", mention_author=False)
