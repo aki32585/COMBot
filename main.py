@@ -14,6 +14,10 @@ with open('config.json') as config_file:
     config_data = json.load(config_file)
     TOKEN = config_data.get('token', '')
 
+@client.event
+async def on_ready():
+    print('Logged in as {0.user}'.format(client))
+    await tree.sync()
 
 @client.event
 async def on_message(message):
