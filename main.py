@@ -36,5 +36,12 @@ async def on_message(message):
 
     #         # リプライで送る(メンションなし)
     #         await message.channel.send(f"{modified_url}", mention_author=False)
-
+    if message.content.startswith("!hyouketsu"):
+            h1 = message.content.split(" ")
+            print(h1)
+            h2 = int(h1[1])
+            h2 = round(h2 / 170)
+            print(h2)
+            await message.reply(f"🍶🤖<氷結{str(h2)}本買えるのに...", mention_author=False)
+            
 client.run(TOKEN)
