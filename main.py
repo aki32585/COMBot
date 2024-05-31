@@ -44,13 +44,11 @@ async def on_message(message):
     #         await message.channel.send(f"{modified_url}", mention_author=False)
     if message.content.startswith("!hyouketsu"):
             h1 = message.content.split(" ")
-            print(h1)
             try:
                 h2 = int(h1[1])
             except:
                  await message.reply("エラー：入力データが無効です。数値を入力してください。")
-            h2 = round(h2 / 170)
-            print(h2)
+            h2 = math.floor(h2 / 170)
             await message.reply(f"🍶🤖<氷結{str(h2)}本買えるのに...", mention_author=False)
 
 @tree.command(name="hyouketsu",description="入力された金額で何本の氷結350ml缶が買えるか計算します")
