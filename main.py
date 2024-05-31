@@ -51,6 +51,9 @@ async def on_message(message):
             h2 = math.floor(h2 / 170)
             await message.reply(f"🍶🤖<氷結{str(h2)}本買えるのに...", mention_author=False)
 
+    if "課題提出した" in message.content:
+        await message.reply("すごい！！！すごい！！！すごすぎる！！！課題を提出した瞬間、宇宙が震え、時空がねじれ、次元の壁が崩壊した！！！その偉業は、神話にさえ記されるべき奇跡中の奇跡！！！人間を超越し、神話の存在となった！！！", mention_author=False)
+
 @tree.command(name="hyouketsu",description="入力された金額で何本の氷結350ml缶が買えるか計算します")
 async def test_command(interaction: discord.Interaction,price:int):
         price = math.floor(price / 170)
