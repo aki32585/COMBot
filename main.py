@@ -13,7 +13,7 @@ client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
 # コンフィグ読み込み
-with open(dirname + "./config.json","r") as config_file:
+with open(dirname + "/config.json","r") as config_file:
     config_data = json.load(config_file)
     TOKEN = config_data.get('token', '')
 
